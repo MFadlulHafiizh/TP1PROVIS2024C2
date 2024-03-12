@@ -1,7 +1,7 @@
 import 'Shirt.dart';
 
 Future<List<Shirt>> stokBaju() async {
-  return Future.delayed(Duration(seconds: 3), () {
+  return Future.delayed(Duration(seconds: 2), () {
     Shirt shirt1 = Shirt();
     Shirt shirt2 = Shirt();
     Shirt shirt3 = Shirt();
@@ -45,8 +45,23 @@ void main() {
   List<Shirt> lShirt = List.empty();
   stokBaju().whenComplete(() {
     print("Sekarang sudah re-stok, anda bisa membeli baju sekarang");
+    print("++++++++++++++++++++++++++++++++++++++++++++");
+    print("     Berikut pilihan baju yang tersedia     ");
+    print("++++++++++++++++++++++++++++++++++++++++++++");
   }).then((value) {
     lShirt = value;
+    for (var element in lShirt) {
+      print("Id Produk : " + element.idProduct);
+      print("Nama Produk : " + element.name);
+      print("Brand : " + element.brand);
+      print("Price : " + element.price.toString());
+      print("Size : " + element.size);
+      print("Material : " + element.material);
+      print("Gender : " + element.gender);
+      print("Color : " + element.color);
+      print("SleeveType : " + element.sleeveType);
+      print("===============================================");
+    }
   });
 
   if (lShirt.isEmpty) {
